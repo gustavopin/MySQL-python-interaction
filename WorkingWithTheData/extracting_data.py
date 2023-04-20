@@ -1,5 +1,7 @@
 import mysql.connector
 import pandas as pd
+import os
+import shutil
 
 # connecting to the mysql server
 school_database = mysql.connector.connect(
@@ -75,3 +77,12 @@ dt2 = pd.DataFrame ({
     'Test 3' : p3,
     'Test 4' : p4
 })
+   
+# writing the excel file
+with pd.ExcelWriter('student_info.xlsx') as writer:
+    dt1.to_excel(writer, sheet_name = 'StudentID', index = False)
+    dt2.to_excel(writer, sheet_name = 'Grades', index = False)
+
+# changing file directory
+# if your file is at a wrong directory, remove the tag from the line below and replace the first 'path' with your current directory and the second 'path' with you wanted directory
+#os.replace(r'path\student_info.xlsx', r'path\student_info.xlsx')
