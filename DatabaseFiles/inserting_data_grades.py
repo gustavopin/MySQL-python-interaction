@@ -12,6 +12,7 @@ school_database = mysql.connector.connect(
 school_cursor = school_database.cursor()
 
 # inserting data in the 'grades' table
+# use ('', '', '', ''), to insert more data
 sql_insert2 = 'INSERT INTO grades (p1, p2, p3, p4) VALUES (%s, %s, %s, %s)'
 values2 = [
     ('10', '9', '8', '10'),
