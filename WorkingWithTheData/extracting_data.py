@@ -84,5 +84,5 @@ with pd.ExcelWriter('student_info.xlsx') as writer:
     dt2.to_excel(writer, sheet_name = 'Grades', index = False)
 
 # changing file directory
-# if your file is at a wrong directory, remove the tag from the line below and replace the first 'path' with your current directory and the second 'path' with you wanted directory
-#os.replace(r'path\student_info.xlsx', r'path\student_info.xlsx')
+# if your file is at a wrong directory, remove the tag from the line below and replace the paths
+#os.replace(r'Python\student_info.xlsx', r'Project4\WorkingWithTheData\student_info.xlsx')
