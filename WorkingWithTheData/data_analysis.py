@@ -20,14 +20,16 @@ sum_grades = [w + x + y + z for w, x, y, z in zip(p1, p2, p3, p4)]
 average_grade = [x / 4 for x in sum_grades]
 
 # creating a dictionary with the average grades of the students
-df1 = pd.DataFrame({'Average Grade' : average_grade})
+df1 = pd.DataFrame({
+    'Average Grade' : average_grade
+})
 
-# storing the grades inside the xlsx file
-wb = load_workbook('Project4\WorkingWithTheData\student_info.xlsx')
-ws = wb['Grades']
 
-for index, row in df1.iterrows(): #still working on this
-    cell = 'C%d' % (index + 5)
-    ws[cell] = row[0]
 
-wb.save()
+# updating the xlsx file with the new dataframe
+# THIS IS REWRITING THE xlsx FILE, NEED TO WORK ON THAT
+#data2['Average Grades'] = df1
+
+#writer = pd.ExcelWriter('Project4\WorkingWithTheData\student_info.xlsx')
+#data2.to_excel(writer, index = False)
+#writer.save()
