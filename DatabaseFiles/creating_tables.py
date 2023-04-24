@@ -13,8 +13,8 @@ school_cursor = school_database.cursor()        #cursor is a temporary memory us
 
 # creating a table with students information
 # after the table is created, insert a tag in the line below
-#school_cursor.execute('CREATE TABLE student (student_number int PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100), age smallint UNSIGNED)')
+school_cursor.execute('CREATE TABLE student (student_number int PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100), age smallint UNSIGNED)')
 
 # creating a table with student grades
 # after the table is created, insert a tag in the line below
-#school_cursor.execute('CREATE TABLE grades (student_number int PRIMARY KEY AUTO_INCREMENT, p1 smallint, p2 smallint, p3 smallint, p4 smallint)')
+school_cursor.execute('CREATE TABLE grades (student_number int PRIMARY KEY AUTO_INCREMENT, p1 smallint, p2 smallint, p3 smallint, p4 smallint)')

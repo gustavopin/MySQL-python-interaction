@@ -84,4 +84,4 @@ with pd.ExcelWriter('student_info.xlsx') as writer:
 
 # changing file directory
 # if your file is at a wrong directory, remove the tag from the line below and replace the paths
-os.replace(r'C:\Users\gusta\Desktop\Programação\Testes\Python\student_info.xlsx', r'Project4\WorkingWithTheData\student_info.xlsx')
+os.replace(r'Python\student_info.xlsx', r'Project4\WorkingWithTheData\student_info.xlsx')
