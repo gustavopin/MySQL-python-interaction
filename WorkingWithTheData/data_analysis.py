@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sn
 
 
 # reading the xlsx file
@@ -50,9 +51,50 @@ std_abv_min = std_abv_min - std_blw_min
     
     # results
 print(f'\nStudents above the minimum grade: {std_abv_min}')
-print(f'Students below the minimum grade: {std_blw_min}')
+print(f'Students below the minimum grade: {std_blw_min}\n')
 
-    # graph
+
+# average grade per test
+    # summing the number of grades
+number_students = 0
+for student in studentID:
+    number_students += 1
+
+    # test1
+sum_p1 = 0
+for grade in p1:
+    sum_p1 = sum_p1 + grade
+average_p1 = sum_p1 / number_students
+
+    # test 2
+sum_p2 = 0
+for grade in p2:
+    sum_p2 = sum_p2 + grade
+average_p2 = sum_p2 / number_students
+
+    # test 3
+sum_p3 = 0
+for grade in p3:
+    sum_p3 = sum_p3 + grade
+average_p3 = sum_p3 / number_students
+
+    # test 4
+sum_p4 = 0
+for grade in p4:
+    sum_p4 = sum_p4 + grade
+average_p4 = sum_p4 / number_students
+
+    # creating a dataframe for the average of every test
+average_tests = pd.DataFrame({
+    "Average Test 1" : average_p1,
+    "Average Test 2" : average_p2,
+    "Average Test 3" : average_p3,
+    "Average Test 4" : average_p4
+}, index = [0])
+
+print(average_tests)
+
+# creating graphs
     # list with objects
 std_abv_blw = [std_abv_min, std_blw_min]
 labels_g1 = ['Above Minimum', 'Below Minimum']
@@ -60,5 +102,39 @@ colors_g1 = ['lightskyblue', 'lightcoral']
 explode_g1 = (0, 0.1)
 
     # ploting the graph
+        #pie
 plt.pie(std_abv_blw, labels = labels_g1, shadow = True, autopct = '%1.1f%%', colors = colors_g1, explode = explode_g1)
+plt.show()
+
+        #bar
+plt.bar(names, average_grade, color = 'grey', width = 0.2)
+plt.xlabel('Student ID')
+plt.ylabel('Grades')
+plt.title('Average Student Grade')
+plt.xticks(rotation = 90)
+plt.show()
+
+# working with correlation matrix
+    # creating a new dataframe for grades
+df2 = pd.DataFrame({
+    'Test 1' : p1,
+    'Test 2' : p2,
+    'Test 3' : p3,
+    'Test 4' : p4
+})
+
+        # correlation matrix (tests)
+matrix1 = df2.corr()
+sn.heatmap(matrix1, annot = True, cmap = 'coolwarm')
+plt.show()
+
+    # creating a new dataframe for age/average grades
+df3 = pd.DataFrame({
+    'Age' : age,
+    'Average Grade' : average_grade,
+})
+        # correlation matrix (age/average grades)
+
+matrix2 = df3.corr()
+sn.heatmap(matrix2, annot = True, cmap = 'coolwarm')
 plt.show()
